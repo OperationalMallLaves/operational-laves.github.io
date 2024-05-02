@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" >
+    <link rel="stylesheet" href="Semantic-UI-CSS-master/Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Operational Laves Mall</title>
+</head>
+<body>
+    <h1>
+      <b>Operational Mall Laves</b>
+    </h1>
+    <div class="ui container segment">
+      <!-- Header -->
+      <div class="ui top attached tabular menu">
+        <a class="item active" data-tab="Form">
+          Form
+        </a>
+        <a class="item" data-tab="View">
+          View
+        </a>
+      </div>
+      <!-- Section Form -->
+      <div class="ui bottom attached tab segment active" data-tab="Form">
+        <!-- Alert -->
+        <div class="ui positive floating message" id="my-alert">
+          <i class="close icon"></i>
+          <div class="header">
+            Berhasil!
+          </div>
+          <p>Input anda berhasil dikirim</p>
+        </div>
+        <!-- Form -->
+        <form class="ui form" name="operational-mall">
+          <!-- Lantai Required -->
+          <div class=" required field">
+            <label>Lantai</label>
+            <select class="ui fluid dropdown" name="lantai">
+              <option value="">Lantai</option>
+              <option value="Lantai B1">Lantai B1</option>
+              <option value="Lantai B2">Lantai B2</option>
+              <option value="Lantai B3">Lantai B3</option>
+              <option value="Lantai LG">Lantai LG</option>
+              <option value="Lantai GF">Lantai GF</option>
+              <option value="Lantai UG">Lantai UG</option>
+              <option value="Lantai 1">Lantai 1</option>
+              <option value="Lantai 2">Lantai 2</option>
+            </select>
+          </div>
+          <!-- Arah Required -->
+          <div class=" required field">
+            <label>Arah</label>
+            <select class="ui fluid dropdown" name="arah">
+              <option value="">Arah</option>
+              <option value="Utara">Utara</option>
+              <option value="Selatan">Selatan</option>
+            </select>
+          </div>
+          <!-- Toilet Required -->
+          <div class=" required field">
+            <label>Toilet</label>
+            <select class="ui fluid dropdown" name="toilet">
+              <option value="">Toilet</option>
+              <option value="Cowok">Cowok</option>
+              <option value="Cewek">Cewek</option>
+              <option value="Difable">Difable</option>
+            </select>
+          </div>
+          <!-- Deskripsi -->
+          <div class="field">
+            <label>Deskripsi</label>
+            <textarea rows="2" style="height: 126px;" name="deskripsi"></textarea>
+          </div>
+          <!-- Button Submit -->
+          <button class="ui button primary btn-kirim" id="btn-kirim" type="submit">Submit</button>
+          <!-- Loading Button -->
+          <button class="ui primary loading button" id="btn-loading">Loading</button>
+        </form>
+      </div>
+    </div>
+
+  <script src="jquery-3.7.0.min.js"></script>
+  <script src="Semantic-UI-CSS-master/Semantic-UI-CSS-master/semantic.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzXDHjZJ_DtGOq-2Xn5vCv-YWRGlho6MHDVCZVjLQX710_ZdsFj8T9Ldxv7oA5acETchA/exec';
+    const form = document.forms['operational-mall']
+    $("#btn-loading").hide();
+    $("#my-alert").hide();
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      // ketika tombol submit di klik, maka tombol berganti
+      $("#btn-kirim").hide();
+      $("#btn-loading").show();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          $("#btn-kirim").show();
+          $("#btn-loading").hide();
+          console.log('Success!', response)
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
