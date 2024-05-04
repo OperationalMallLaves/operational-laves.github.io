@@ -111,10 +111,7 @@
             $("#my-alert").show();
             $("#btn-kirim").show();
             $("#btn-loading").hide();
-            $("#lantai").value("");
-            $("#arah").value("");
-            $("#toilet").value("");
-            $("#deskripsi").value("");
+            form.reset();
             console.log("Success!", response);
           })
           .catch((error) => console.error("Error!", error.message));
