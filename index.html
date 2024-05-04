@@ -34,7 +34,7 @@
           <!-- Lantai Required -->
           <div class="required field">
             <label>Lantai</label>
-            <select class="ui fluid dropdown" name="lantai">
+            <select class="ui fluid dropdown" name="lantai" id="lantai">
               <option value="">Lantai</option>
               <option value="Lantai B1">Lantai B1</option>
               <option value="Lantai B2">Lantai B2</option>
@@ -49,7 +49,7 @@
           <!-- Arah Required -->
           <div class="required field">
             <label>Arah</label>
-            <select class="ui fluid dropdown" name="arah">
+            <select class="ui fluid dropdown" name="arah" id="arah">
               <option value="">Arah</option>
               <option value="Utara">Utara</option>
               <option value="Selatan">Selatan</option>
@@ -58,7 +58,7 @@
           <!-- Toilet Required -->
           <div class="required field">
             <label>Toilet</label>
-            <select class="ui fluid dropdown" name="toilet">
+            <select class="ui fluid dropdown" name="toilet" id="toilet">
               <option value="">Toilet</option>
               <option value="Cowok">Cowok</option>
               <option value="Cewek">Cewek</option>
@@ -72,6 +72,7 @@
               rows="2"
               style="height: 126px"
               name="deskripsi"
+              id="deskripsi"
             ></textarea>
           </div>
           <!-- Button Submit -->
@@ -110,6 +111,10 @@
             $("#my-alert").show();
             $("#btn-kirim").show();
             $("#btn-loading").hide();
+            $("#lantai").value("");
+            $("#arah").value("");
+            $("#toilet").value("");
+            $("#deskripsi").value("");
             console.log("Success!", response);
           })
           .catch((error) => console.error("Error!", error.message));
